@@ -1,0 +1,14 @@
+# nixpacks.toml untuk konfigurasi build Railway
+[variables]
+PHP_VERSION = "8.3"
+NODE_VERSION = "20"
+
+[phases.setup]
+nixPkgs = ["php83", "php83Packages.composer", "nodejs_20"]
+
+[phases.build]
+cmds = [
+    "composer install --no-interaction --optimize-autoloader --no-dev",
+    "npm install",
+    "npm run build"
+]
